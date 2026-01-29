@@ -1,0 +1,17 @@
+# Changes here will be overwritten by Copier
+_commit: 4.3.0
+_src_path: https://github.com/DiamondLightSource/python-copier-template.git
+author_email: "53935796+DiamondJoseph@users.noreply.github.com"
+author_name: "Joseph Ware"
+description: ""
+distribution_name: fullstack
+docker: true
+docker_debug: false
+docs_type: README
+git_platform: github.com
+github_org: DiamondJoseph
+package_name: fullstack
+pypi: false
+repo_name: fullstack
+strict_typing: true
+type_checker: pyright
