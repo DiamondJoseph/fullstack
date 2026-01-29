@@ -8,6 +8,9 @@ from fastapi import FastAPI, Request, Response
 from fullstack.config import ApplicationConfig
 from fullstack.db import setup_database
 
+from .applicant import applicant_router
+from .exercise import exercise_router
+
 LOGGER = logging.getLogger(__name__)
 REST_API_VERSION = "0.0.1"
 
@@ -32,6 +35,8 @@ async def add_api_version_header(
 def get_app(config: ApplicationConfig):
     app = FastAPI(version=REST_API_VERSION, lifespan=lifespan(config))
     app.middleware("http")(add_api_version_header)
+    app.include_router(applicant_router)
+    app.include_router(exercise_router)
     return app
 
 
