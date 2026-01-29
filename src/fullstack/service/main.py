@@ -11,6 +11,7 @@ from fullstack.db import setup_database
 from .applicant import applicant_router
 from .application import application_router
 from .exercise import exercise_router
+from .reporting import reporting_router
 
 LOGGER = logging.getLogger(__name__)
 REST_API_VERSION = "0.0.1"
@@ -39,6 +40,7 @@ def get_app(config: ApplicationConfig):
     app.include_router(applicant_router)
     app.include_router(exercise_router)
     app.include_router(application_router)
+    app.include_router(reporting_router)
     return app
 
 
