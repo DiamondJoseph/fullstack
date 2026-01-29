@@ -9,6 +9,7 @@ from fullstack.config import ApplicationConfig
 from fullstack.db import setup_database
 
 from .applicant import applicant_router
+from .application import application_router
 from .exercise import exercise_router
 
 LOGGER = logging.getLogger(__name__)
@@ -37,6 +38,7 @@ def get_app(config: ApplicationConfig):
     app.middleware("http")(add_api_version_header)
     app.include_router(applicant_router)
     app.include_router(exercise_router)
+    app.include_router(application_router)
     return app
 
 
