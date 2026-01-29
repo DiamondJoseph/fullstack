@@ -21,6 +21,15 @@ class LoggingConfig(Config):
     level: LogLevel = "INFO"
 
 
+class DatabaseConfig(Config):
+    initialise: bool = True
+
+
+class SQLiteConfig(DatabaseConfig):
+    file_name: str = "database.db"
+
+
 class ApplicationConfig(Config):
     rest: RestConfig = RestConfig()
     logging: LoggingConfig = LoggingConfig()
+    database: DatabaseConfig = SQLiteConfig()

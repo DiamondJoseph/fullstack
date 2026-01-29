@@ -1,13 +1,24 @@
 import logging
 from collections.abc import Awaitable, Callable
+from contextlib import asynccontextmanager
 
 import uvicorn
 from fastapi import FastAPI, Request, Response
 
 from fullstack.config import ApplicationConfig
+from fullstack.db import setup_database
 
 LOGGER = logging.getLogger(__name__)
 REST_API_VERSION = "0.0.1"
+
+
+def lifespan(config: ApplicationConfig):
+    @asynccontextmanager
+    async def inner(app: FastAPI):
+        setup_database(config.database)
+        yield
+
+    return inner
 
 
 async def add_api_version_header(
@@ -19,7 +30,7 @@ async def add_api_version_header(
 
 
 def get_app(config: ApplicationConfig):
-    app = FastAPI(version=REST_API_VERSION)
+    app = FastAPI(version=REST_API_VERSION, lifespan=lifespan(config))
     app.middleware("http")(add_api_version_header)
     return app
 

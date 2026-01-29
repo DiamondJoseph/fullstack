@@ -16,6 +16,7 @@ dependencies = [
     "click",
     "fastapi",
     "pydantic",
+    "sqlmodel",
 ] # Add project dependencies here, e.g. ["click", "numpy"]
 dynamic = ["version"]
 license.file = "LICENSE"
