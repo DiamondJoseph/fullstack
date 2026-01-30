@@ -20,3 +20,7 @@ def main(ctx: click.Context) -> None:
 @click.pass_obj
 def start_application(config: ApplicationConfig):
     start(config)
+
+
+if __name__ == "__main__":
+    main()
